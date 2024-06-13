@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>eShop</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search product..." oninput="filterProducts()">
+            <select id="sortSelect" class="styled-select" onchange="sortProducts()">
+                <option value="">-- Sort products (Don't sort) --</option>
+                <option value="name-asc">Sort by Name (A-Z)</option>
+                <option value="name-desc">Sort by Name (Z-A)</option>
+                <option value="price-asc">Sort by Price (Low to High)</option>
+                <option value="price-desc">Sort by Price (High to Low)</option>
+            </select>
+            <select id="filterCategory" class="styled-select" onchange="filterByCategory()">
+                <option value="">-- Filter by Category --</option>
+                <option value="mini ITX">mini ITX (17×17 см)</option>
+                <option value="micro ATX">micro ATX (24,4×24,4 см)</option>
+                <option value="ATX">ATX (30,5×24,4 см)</option>
+                <option value="XL/Extended/Full ATX">XL/Extended/Full ATX (30,5×33 см)</option>
+            </select>
+            <button class="add-button" onclick="openModal('add')">Create Product</button>
+        </div>
+    </header>
+    <main>
+        <div id="productContainer" class="product-container"></div>
+    </main>
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <input type="hidden" id="productId">
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" id="productName" placeholder="Product Name">
+                <small class="error" id="productNameError"></small>
+            </div>
+            <div class="form-group">
+                <label for="productManufacturer">Manufacturer</label>
+                <input type="text" id="productManufacturer" placeholder="Manufacturer">
+                <small class="error" id="productManufacturerError"></small>
+            </div>
+            <div class="form-group">
+                <label for="productCategory">Category</label>
+                <select id="productCategory" class="styled-select">
+                    <option value="mini ITX">mini ITX (17×17 см)</option>
+                    <option value="micro ATX">micro ATX (24,4×24,4 см)</option>
+                    <option value="ATX">ATX (30,5×24,4 см)</option>
+                    <option value="XL/Extended/Full ATX">XL/Extended/Full ATX (30,5×33 см)</option>
+                </select>
+                <small class="error" id="productCategoryError"></small>
+            </div>
+            <div class="form-group">
+                <label for="productSize">Size</label>
+                <select id="productSize" class="styled-select">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+                <small class="error" id="productSizeError"></small>
+            </div>
+            <div class="form-group">
+                <label for="productPrice">Price</label>
+                <input type="number" id="productPrice" placeholder="Price">
+                <small class="error" id="productPriceError"></small>
+            </div>
+            <div class="form-group">
+                <label for="productMaterials">Materials</label>
+                <select id="productMaterials" class="styled-select">
+                    <option value="метал">Метал</option>
+                    <option value="орг скло">Орг скло</option>
+                    <option value="пластик">Пластик</option>
+                </select>
+                <small class="error" id="productMaterialsError"></small>
+            </div>
+            <div class="form-group">
+                <label for="productImage">Image</label>
+                <input type="file" id="productImage" accept="image/*">
+                <small class="error" id="productImageError"></small>
+            </div>
+            <button class="save-button" onclick="saveProduct()">Save</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
